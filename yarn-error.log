@@ -1,0 +1,42 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\It'sDev\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add standard -D -W
+
+PATH: 
+  C:\Users\It'sDev\AppData\Local\oh-my-posh;C:\Program Files\PowerShell\7-preview;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\PowerShell\7-preview\preview;C:\Users\It'sDev\scoop\apps\gcc\current\bin;C:\Users\It'sDev\scoop\shims;C:\Users\It'sDev\AppData\Local\Microsoft\WindowsApps;C:\Users\It'sDev\AppData\Roaming\npm;C:\Users\It'sDev\AppData\Local\Programs\Microsoft VS Code\bin
+
+Yarn version: 
+  1.22.18
+
+Node version: 
+  17.9.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  SyntaxError: C:\Users\It'sDev\Desktop\GitHub\Clones\SocialMedia\package.json: Unexpected token } in JSON at position 175
+      at JSON.parse (<anonymous>)
+      at C:\Users\It'sDev\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (C:\Users\It'sDev\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:310:30)
+      at C:\Users\It'sDev\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "social-media-app",
+    "version": "1.0.0",
+    "author": "iDiego5614",
+    "workspaces" :[
+      "backend",
+      "frontend"
+    ],
+    "license": "MIT",
+    "private": true,
+    
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

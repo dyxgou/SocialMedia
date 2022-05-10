@@ -1,0 +1,24 @@
+{
+  "name": "social-media-app",
+  "version": "1.0.0",
+  "author": "iDiego5614",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "co" : "sui-mono commit"
+  },
+  "devDependencies": {
+    "@s-ui/mono": "^2.26.0",
+    "standard": "17.0.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/standard/eslintrc.json",
+      "./eslintrc.json"
+    ]
+  }
+}
