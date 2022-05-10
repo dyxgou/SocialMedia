@@ -1,4 +1,5 @@
 import { FastifyPluginAsync } from 'fastify'
+import isFollow from '../../../hooks/isFollow'
 import { UserRequest } from '../types'
 
 const followUser : FastifyPluginAsync = async(fastify , options) =>
@@ -10,12 +11,21 @@ const followUser : FastifyPluginAsync = async(fastify , options) =>
     const { userId : userIdToFollow } = request.params
     const { userId } = request.user
 
-    const [ userFollowing , userToFollow ] = await fastify.store.User.find({
-      _id : [ userId , userIdToFollow ]
-    } , { followers : true , followings : true })
+    if(userIdToFollow === userId)
+      throw fastify.httpErrors.notAcceptable("You can't follow yourself")
+
+    const [ userFollowing , userToFollow ] = await Promise.all([
+      fastify.store.User.findById(userId , { followings : true }),
+      fastify.store.User.findById(userIdToFollow , { followers : true })
+    ])
 
     if(!userFollowing || !userToFollow)
       throw fastify.httpErrors.notFound("Some of the two users hasn't found")
+
+    const isFollowed = isFollow(userFollowing , userToFollow)
+
+    if(isFollowed)
+      throw fastify.httpErrors.notAcceptable("The user is already followed")
 
     try {
       await userFollowing.updateOne({
