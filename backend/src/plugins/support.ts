@@ -1,4 +1,5 @@
 import fastifyCors from '@fastify/cors'
+import fastifyMultipart from '@fastify/multipart'
 import fp from 'fastify-plugin'
 import checkToken, { IPaylaod, ITokenUser, IVerifyToken } from '../services/checkToken'
 import connectDB, { IStore } from '../services/connectDB'
@@ -15,6 +16,15 @@ export default fp<SupportPluginOptions>(async (fastify, opts) => {
   void await fastify.register(checkToken)
   void await fastify.register(registerJWT)
   void fastify.register(fastifyCors)
+  void fastify.register(fastifyMultipart , {
+    limits : {
+      files :  1,
+      fields : 1,
+      fileSize : 1000 * 1000
+    },
+    attachFieldsToBody : true,
+  })
+  
 })
 
 // When using .decorate you have to specify added properties for Typescript

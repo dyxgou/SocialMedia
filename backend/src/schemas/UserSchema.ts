@@ -1,4 +1,5 @@
 import { Schema , Document } from "mongoose"
+import { IPost } from "./PostsSchema"
 
 type Image = 
 {
@@ -15,6 +16,7 @@ export interface IUser extends Document
   cover : Image,
   followers : Array<Schema.Types.ObjectId & IUser>,
   followings : Schema.Types.ObjectId[] & IUser[],
+  posts : Schema.Types.ObjectId[] & IPost[]
 } 
 
 const UserSchema = new Schema<IUser>(
@@ -53,6 +55,12 @@ const UserSchema = new Schema<IUser>(
       url : String,
       publicId : String
     },
+    posts : [
+      {
+        type : Schema.Types.ObjectId,
+        ref : "posts"
+      }
+    ]
   }
 )
 
